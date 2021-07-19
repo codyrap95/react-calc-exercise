@@ -1,10 +1,11 @@
 import React from "react";
 import "./App.css";
+import Counter from "./components/Counter";
 
 function App() {
   return (
     <React.Fragment>
-      <p>Test</p>
+      <Counter />
     </React.Fragment>
   );
 }

@@ -5,8 +5,13 @@ const numReducer = (state, action) => {
   if (action.type === "DECREASE" && state > 0) return state - 1;
   return state;
 };
-export default function Counter() {
+export default function Counter(props) {
   const [numState, dispatch] = useReducer(numReducer, 0);
+  const fetchSW = async () => {
+    const response = await fetch("https://swapi.dev/api/films");
+    const data = await response.json();
+    props.fetchedData(data.results);
+  };
   return (
     <div>
       <button
@@ -24,6 +29,7 @@ export default function Counter() {
       >
         -
       </button>
+      <button onClick={fetchSW}>Fetch</button>
     </div>
   );
 }
